@@ -72,21 +72,21 @@ const Drawer = styled(MuiDrawer, {
     ...theme.mixins.toolbar,
   }));
   const array1 = [
-    {"text":"Dasboard", "icon":<HomeOutlinedIcon/> , "path": "/"},
-    {"text":"Manage Team", "icon":<PeopleOutlined/> , "path": "/team"},
-    {"text":"Contacts Information", "icon":<ContactsOutlined/> , "path": "/contacts"},
-    {"text":"Inovices Balance", "icon":<ReceiptOutlined/> , "path": "/invoices"},
+    {"text":"Dasboard", "icon":<HomeOutlinedIcon/> , "path": "/maindashboard"},
+    {"text":"Manage Team", "icon":<PeopleOutlined/> , "path": "/maindashboard/team"},
+    {"text":"Contacts Information", "icon":<ContactsOutlined/> , "path": "/maindashboard/contacts"},
+    {"text":"Inovices Balance", "icon":<ReceiptOutlined/> , "path": "/maindashboard/invoices"},
   ];
   const array2 = [
-    {"text":"Profile Form", "icon":<PersonOutline/> , "path": "/form"},
-    {"text":"Calender", "icon":<CalendarTodayOutlinedIcon/> , "path": "/calender"},
-    {"text":"FAQ Page", "icon":<HelpOutlined/> , "path": "/faq"},
+    {"text":"Profile Form", "icon":<PersonOutline/> , "path": "/maindashboard/form"},
+    {"text":"Calender", "icon":<CalendarTodayOutlinedIcon/> , "path": "/maindashboard/calender"},
+    {"text":"FAQ Page", "icon":<HelpOutlined/> , "path": "/maindashboard/faq"},
   ];
   const array3 = [
-    {"text":"Bar Chart", "icon":<BarChartOutlined/> , "path": "/bar"},
-    {"text":"Pie Chart", "icon":<PieChartOutlined/> , "path": "/pie"},
-    {"text":"Line Chart", "icon":<TimelineOutlined/> , "path": "/line"},
-    {"text":"Geography Chart", "icon":<MapOutlined/> , "path": "/geography"},
+    {"text":"Bar Chart", "icon":<BarChartOutlined/> , "path": "/maindashboard/bar"},
+    {"text":"Pie Chart", "icon":<PieChartOutlined/> , "path": "/maindashboard/pie"},
+    {"text":"Line Chart", "icon":<TimelineOutlined/> , "path": "/maindashboard/line"},
+    {"text":"Geography Chart", "icon":<MapOutlined/> , "path": "/maindashboard/geography"},
   ];
   
   

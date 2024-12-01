@@ -19,20 +19,25 @@ import BarChart from './pages/bar chart/BarChart.jsx';
 import PieChart from './pages/pie chart/PieChart.jsx';
 import LineChart from './pages/line chart/LineChart.jsx';
 import Geography from './pages/geography/Geography.jsx';
+import MainDashboard from "./components/MainDashboard";
+import Login from './components/Login.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Dashboard/>} />
-      <Route path="/team" element={<Team/>} />
-      <Route path="/contacts" element={<Contacts/>} />
-      <Route path="/invoices" element={<Inovices/>} />
-      <Route path="/form" element={<Profile/>} />
-      <Route path="/calender" element={<Calender/>} />
-      <Route path="/faq" element={<Faq/>} />
-      <Route path="/bar" element={<BarChart/>} />
-      <Route path="/pie" element={<PieChart/>} />
-      <Route path="/line" element={<LineChart/>} />
-      <Route path="/geography" element={<Geography/>} />
+      <Route index element={<Login/>} />
+      <Route path="/maindashboard" element={<MainDashboard />}>
+        <Route index element={<Dashboard />} /> {/* Default child route for MainDashboard */}
+        <Route path="team" element={<Team />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="invoices" element={<Inovices />} />
+        <Route path="form" element={<Profile />} />
+        <Route path="calender" element={<Calender />} />
+        <Route path="faq" element={<Faq />} />
+        <Route path="bar" element={<BarChart />} />
+        <Route path="pie" element={<PieChart />} />
+        <Route path="line" element={<LineChart />} />
+        <Route path="geography" element={<Geography />} />
+      </Route>
      
     </Route>
   )

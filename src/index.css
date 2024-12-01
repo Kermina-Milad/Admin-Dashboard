@@ -31,3 +31,9 @@
 html {
     scrollbar-color: #9e4673 #d3d5d7;
 }
+
+@media (min-width: 0px) {
+    .css-1rbt6d4-MuiContainer-root {
+        max-width: 100% !important;
+    }
+}

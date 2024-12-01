@@ -8,6 +8,8 @@ import SideBar from "./components/SideBar";
 import { ThemeProvider } from '@mui/material/styles';
 import { getDesignTokens, useMode } from "./Theme";
 import { Outlet } from "react-router-dom";
+import Login from "./components/Login";
+import MainDashboard from "./components/MainDashboard";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -30,16 +32,19 @@ export default function MiniDrawer() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <TopBar open={open} handleDrawerOpen={handleDrawerOpen} setMode={colorMode.toggleColorMode} />
-        <SideBar open={open} handleDrawerClose={handleDrawerClose} />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
-         <Outlet/>
-        </Box>
+        {/* <TopBar open={open} handleDrawerOpen={handleDrawerOpen} setMode={colorMode.toggleColorMode} /> */}
+        {/* <MainDashboard/> */}
+        {/* <Login/> */}
+        <Outlet />
+        {/* <SideBar open={open} handleDrawerClose={handleDrawerClose} /> */}
+        {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}> */}
+          {/* <DrawerHeader /> */}
+         {/* <Outlet/> */}
+        {/* </Box> */}
       </Box>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
