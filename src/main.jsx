@@ -6,7 +6,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Router,
   RouterProvider,
+  Routes,
 } from "react-router-dom";
 import Dashboard from './pages/dashboard/Dashboard.jsx';
 import Team from './pages/team/Team.jsx';
@@ -38,6 +40,7 @@ const router = createBrowserRouter(
         <Route path="line" element={<LineChart />} />
         <Route path="geography" element={<Geography />} />
       </Route>
+
      
     </Route>
   )

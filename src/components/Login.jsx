@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { postLogin } from '../apis/users'; // Adjust the import path accordingly
+import { postLogin, authenticate } from '../apis/users'; // Adjust the import path accordingly
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -24,8 +24,12 @@ const Login = () => {
                 },
             });
             console.log('Login successful:', response);
-            // Navigate to /maindashboard on successful login
-            navigate('/maindashboard');
+
+            // Use the authenticate function to store the JWT in local storage
+            authenticate(response, () => {
+                // Navigate to /maindashboard on successful login
+                navigate('/maindashboard');
+            });
         } catch (err) {
             console.error('Login error:', err);
             setError('Login failed. Please check your credentials.');

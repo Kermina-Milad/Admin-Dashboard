@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Modal, Typography, Avatar, Divider, Button } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import {api} from '../../apis/base'; // Adjust the import path to your API file
+import { logout } from '../../apis/users';
 
 const Profile = ({ open, handleClose }) => {
+  const [user, setUser ] = useState(null);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  useEffect(() => {
+    const userData = localStorage.getItem('jwt'); // Retrieve the JWT token
+    if (userData) {
+      setUser (JSON.parse(userData)); // Parse and set the user data
+    }
+  }, []);
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -15,18 +28,12 @@ const Profile = ({ open, handleClose }) => {
     p: 4,
     borderRadius: '8px',
   };
-  const user={
- "id": 1,
-        "image": "https://yousab-tech.com/jaiden/public/default.jpg",
-        "name": "Super Admin",
-        "pending": 0,
-        "type": "admin",
-        "phone": "01126785910",
-        "email": "admin@gmail.com",
-        "address": null,
-        "website_link": null,
-        "governorates": []
-  }
+
+  const handleLogout = async () => {
+    logout(() => {
+      navigate(`/`);
+    });
+  };
 
   return (
     <Modal
@@ -40,24 +47,30 @@ const Profile = ({ open, handleClose }) => {
           User Profile
         </Typography>
         <Divider sx={{ my: 2 }} />
-        
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Avatar alt={user.name} src={user.image} sx={{ width: 56, height: 56, mb: 2 }} />
-          <Typography variant="h6">{user.name}</Typography>
-          <Typography variant="body2" color="text.secondary">{user.type}</Typography>
-          <Typography variant="body2" color="text.secondary">Phone: {user.phone}</Typography>
-          <Typography variant="body2" color="text.secondary">Email: {user.email}</Typography>
-          <Typography variant="body2" color="text.secondary">Pending: {user.pending}</Typography>
-          <Typography variant="body2" color="text.secondary">Address: {user.address || 'N/A'}</Typography>
-          <Typography variant="body2" color="text.secondary">Website: {user.website_link || 'N/A'}</Typography>
-        </Box>
+
+        {user ? (
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Avatar alt={user.user.name} src={user.user.image} sx={{ width: 56, height: 56, mb: 2 }} />
+            <Typography variant="h6">{user.user.name}</Typography>
+            <Typography variant="body2" color="text.secondary">{user.user.type}</Typography>
+            <Typography variant="body2" color="text.secondary">Phone: {user.user.phone}</Typography>
+            <Typography variant="body2" color="text.secondary">Email: {user.user.email}</Typography>
+            {/* Uncomment if you want to display these fields */}
+            {/* <Typography variant="body2" color="text.secondary">Pending: {user.pending || 'N/A'}</Typography>
+            <Typography variant="body2" color="text.secondary">Address: {user.address || 'N/A'}</Typography>
+            <Typography variant="body2" color="text.secondary">Website: {user.website_link || 'N/A'}</Typography> */}
+          </Box>
+        ) : (
+          <Typography variant="body2" color="text.secondary">Loading user information...</Typography>
+        )}
+
         <Divider sx={{ my: 2 }} />
-        
+
         <Button 
           variant="contained" 
           color="error" 
           startIcon={<ExitToAppIcon />} 
-          // onClick={handleLogout} 
+          onClick={handleLogout} 
           fullWidth
         >
           Logout
