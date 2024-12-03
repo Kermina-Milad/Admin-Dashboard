@@ -11,6 +11,8 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import { useState } from "react";
+import Profile from "./modals/profile";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,7 +78,10 @@ const AppBar = styled(MuiAppBar, {
 }));
 // eslint-disable-next-line react/prop-types
 const TopBar = ({ open, handleDrawerOpen, setMode }) => {
-    const theme = useTheme ()
+    const theme = useTheme ();
+    const [profileopen, setProfileopen] = useState(false);
+  const handleOpen = () => setProfileopen(true);
+  const handleClose = () => setProfileopen(false);
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
@@ -123,9 +128,12 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
           <IconButton color="inherit">
             <SettingsOutlinedIcon />
           </IconButton>
-          <IconButton color="inherit">
-            <Person2OutlinedIcon />
-          </IconButton>
+          <div>
+      <IconButton color="inherit" onClick={handleOpen}>
+        <Person2OutlinedIcon />
+      </IconButton>
+      <Profile open={profileopen} handleClose={handleClose} />
+    </div>
         </Stack>
       </Toolbar>
     </AppBar>
